@@ -1,0 +1,39 @@
+# Binários e arquivos de build
+bin/
+obj/
+*.exe
+*.dll
+*.pdb
+*.cache
+
+# Configurações de usuário do Visual Studio
+.vs/
+*.user
+*.suo
+*.vsp
+*.vspx
+*.sln.docstates
+
+# Arquivos de pacotes e dependências
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+
+# Logs e arquivos temporários
+*.log
+*.tmp
+*.temp
+logs/
+
+# Configurações específicas de IDEs
+.idea/
+*.code-workspace
+
+# Diretórios do .NET SDK
+.dotnet/
+.nuget/
+
+# Arquivos de cache do Rider e Resharper (se aplicável)
+*.sln.iml
+.idea/
