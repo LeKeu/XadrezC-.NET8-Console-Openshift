@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Application\" />
     <Folder Include="Domain\Core\Ports\" />
   </ItemGroup>
 

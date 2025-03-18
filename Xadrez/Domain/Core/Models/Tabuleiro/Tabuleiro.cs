@@ -18,5 +18,7 @@ namespace Xadrez.Domain.Core.Models.Tabuleiro
             Colunas = colunas;
             _pecas = new Peca[linhas, colunas];
         }
+
+        public Peca RetornarPecaNaPosicao(int linha, int coluna) => _pecas[linha, coluna];
     }
 }
