@@ -1,6 +1,6 @@
 ﻿using Xadrez.Domain.Core.Exceptions;
 
-namespace Xadrez.Domain.Core.Models.Tabuleiro
+namespace Xadrez.Domain.Core.Models.ModelTabuleiro
 {
     internal class Tabuleiro
     {

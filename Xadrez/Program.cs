@@ -3,18 +3,15 @@ using Xadrez.Domain.Application.UseCases;
 using Xadrez.Domain.Application.UseCases.Xadrez;
 using Xadrez.Domain.Core.Enums;
 using Xadrez.Domain.Core.Exceptions;
-using Xadrez.Domain.Core.Models.Tabuleiro;
+using Xadrez.Domain.Core.Models.ModelTabuleiro;
+using Xadrez.Domain.Core.Models.Pecas;
 
-Console.WriteLine("Hello, World!");
+
 try
 {
-    Tabuleiro tab = new(5, 5);
-
-    tab.ColocarPeca(new Torre(tab, EnumCor.Vermelho), new Posicao(0, 0));
-    tab.ColocarPeca(new Rei(tab, EnumCor.Vermelho), new Posicao(0, 9));
-    tab.ColocarPeca(new Rei(tab, EnumCor.Amarela), new Posicao(3, 2));
-
-    Tela.ImprimirTabuleiro(tab);
+    PosicaoXadrez pos = new('c', 7);
+    Console.WriteLine(pos);
+    Console.WriteLine(pos.ToPosicao());
 }
 catch(TabuleiroException ex)
 {

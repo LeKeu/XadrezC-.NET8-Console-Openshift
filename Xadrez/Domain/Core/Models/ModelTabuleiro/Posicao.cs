@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xadrez.Domain.Core.Models.Tabuleiro
+namespace Xadrez.Domain.Core.Models.ModelTabuleiro
 {
     class Posicao
     {

@@ -1,4 +1,4 @@
-﻿using Xadrez.Domain.Core.Models.Tabuleiro;
+﻿using Xadrez.Domain.Core.Models.ModelTabuleiro;
 
 namespace Xadrez.Domain.Application.UseCases
 {

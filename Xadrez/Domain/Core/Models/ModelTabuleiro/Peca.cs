@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xadrez.Domain.Core.Enums;
 
-namespace Xadrez.Domain.Core.Models.Tabuleiro
+namespace Xadrez.Domain.Core.Models.ModelTabuleiro
 {
     class Peca
     {
