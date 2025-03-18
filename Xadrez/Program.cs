@@ -3,5 +3,4 @@ using Xadrez.Domain.Application.Tabuleiro;
 
 Console.WriteLine("Hello, World!");
 
-Posicao P = new(3, 5);
-Console.WriteLine("posicao ; " + P);
+Tabuleiro tab = new(3, 3);
