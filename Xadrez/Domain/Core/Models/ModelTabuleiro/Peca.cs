@@ -21,5 +21,7 @@ namespace Xadrez.Domain.Core.Models.ModelTabuleiro
             this.cor = cor;
             qntdMovimentos = 0;
         }
+
+        public void IncrementarQntdMovimentos() => qntdMovimentos++;
     }
 }

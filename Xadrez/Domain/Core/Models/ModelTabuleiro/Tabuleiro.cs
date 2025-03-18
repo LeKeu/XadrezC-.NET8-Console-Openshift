@@ -28,19 +28,32 @@ namespace Xadrez.Domain.Core.Models.ModelTabuleiro
             peca.Posicao = pos;
         }
 
+        public Peca RetirarPeca(Posicao pos)
+        {
+            if (RetornarPecaNaPosicao(pos) == null)
+                return null;
+
+            Peca pecaAux = RetornarPecaNaPosicao(pos);
+            pecaAux.Posicao = null;
+            _pecas[pos.Linha, pos.Coluna] = null;
+            return pecaAux;
+        }
+
+        #region Checagens
         public bool ExistePecaNaPosicao(Posicao pos)
         {
             ValidarPosicao(pos);
             return RetornarPecaNaPosicao(pos) != null;
         }
 
-        public bool PosicaoValida(Posicao pos) => 
+        public bool PosicaoEValida(Posicao pos) => 
             (pos.Linha < 0 || pos.Linha >= Linhas || pos.Coluna < 0 || pos.Coluna >= Colunas) ? false : true;
 
         public void ValidarPosicao(Posicao pos)
         {
-            if (!PosicaoValida(pos))
+            if (!PosicaoEValida(pos))
                 throw new TabuleiroException($"Posição {pos} inválida!");
         }
+        #endregion
     }
 }

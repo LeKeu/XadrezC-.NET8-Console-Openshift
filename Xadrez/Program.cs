@@ -9,18 +9,9 @@ using Xadrez.Domain.Core.Models.Pecas;
 
 try
 {
-    PosicaoXadrez pos = new('c', 7);
-    Console.WriteLine(pos);
-    Console.WriteLine(pos.ToPosicao());
+    PartidaDeXadrez partida = new PartidaDeXadrez();
 
-    Tabuleiro tab = new(8, 8);
-
-    tab.ColocarPeca(new Torre(tab, EnumCor.Preta), new Posicao(0, 0));
-    tab.ColocarPeca(new Rei(tab, EnumCor.Branca), new Posicao(0, 4));
-    tab.ColocarPeca(new Rei(tab, EnumCor.Branca), new Posicao(3, 2));
-    tab.ColocarPeca(new Rei(tab, EnumCor.Branca), new Posicao(5, 7));
-
-    Tela.ImprimirTabuleiro(tab);
+    Tela.ImprimirTabuleiro(partida.Tabuleiro);
 }
 catch(TabuleiroException ex)
 {
