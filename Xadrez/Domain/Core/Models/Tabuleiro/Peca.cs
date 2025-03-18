@@ -14,9 +14,9 @@ namespace Xadrez.Domain.Core.Models.Tabuleiro
         public int qntdMovimentos { get; protected set; }
         public Tabuleiro tabuleiro { get; protected set; }
 
-        public Peca(Posicao pos, Tabuleiro tab, EnumCor cor)
+        public Peca(Tabuleiro tab, EnumCor cor)
         {
-            Posicao = pos;
+            Posicao = null;
             tabuleiro = tab;
             this.cor = cor;
             qntdMovimentos = 0;

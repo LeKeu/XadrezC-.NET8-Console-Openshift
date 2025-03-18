@@ -20,5 +20,11 @@ namespace Xadrez.Domain.Core.Models.Tabuleiro
         }
 
         public Peca RetornarPecaNaPosicao(int linha, int coluna) => _pecas[linha, coluna];
+        
+        public void ColocarPeca(Peca peca, Posicao pos)
+        {
+            _pecas[pos.Linha, pos.Coluna] = peca; 
+            peca.Posicao = pos;
+        }
     }
 }
