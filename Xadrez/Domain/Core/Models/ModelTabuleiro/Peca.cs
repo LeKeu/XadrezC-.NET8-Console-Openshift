@@ -7,7 +7,7 @@ using Xadrez.Domain.Core.Enums;
 
 namespace Xadrez.Domain.Core.Models.ModelTabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         public Posicao Posicao { get; set; }
         public EnumCor cor { get; protected set; }
@@ -23,5 +23,7 @@ namespace Xadrez.Domain.Core.Models.ModelTabuleiro
         }
 
         public void IncrementarQntdMovimentos() => qntdMovimentos++;
+
+        public abstract bool[,] MovimentosPossiveis();
     }
 }
