@@ -14,12 +14,15 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
         public Tabuleiro Tabuleiro {  get; private set; }
         private int Turno;
         private EnumCor JogadorAtual;
+        public bool Terminada {  get; private set; }
 
         public PartidaDeXadrez()
         {
             Tabuleiro = new Tabuleiro(8, 8);
             Turno = 1;
             JogadorAtual = EnumCor.Branca;
+            Terminada = false;
+
             ColocarPecas();
         }
 

@@ -1,4 +1,5 @@
-﻿using Xadrez.Domain.Core.Enums;
+﻿using Xadrez.Domain.Application.UseCases.Xadrez;
+using Xadrez.Domain.Core.Enums;
 using Xadrez.Domain.Core.Models.ModelTabuleiro;
 
 namespace Xadrez.Domain.Application.UseCases
@@ -39,6 +40,14 @@ namespace Xadrez.Domain.Application.UseCases
                 Console.Write(peca);
                 Console.ForegroundColor = corAux;
             }
+        }
+
+        public static PosicaoXadrez LerPosicaoXadrez()
+        {
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+            return new PosicaoXadrez(coluna, linha);
         }
     }
 }
