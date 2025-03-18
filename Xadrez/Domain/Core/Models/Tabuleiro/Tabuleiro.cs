@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Xadrez.Domain.Core.Exceptions;
 
 namespace Xadrez.Domain.Core.Models.Tabuleiro
 {
@@ -21,10 +17,26 @@ namespace Xadrez.Domain.Core.Models.Tabuleiro
 
         public Peca RetornarPecaNaPosicao(int linha, int coluna) => _pecas[linha, coluna];
         
+        public Peca RetornarPecaNaPosicao(Posicao pos) => _pecas[pos.Linha, pos.Coluna];
         public void ColocarPeca(Peca peca, Posicao pos)
         {
             _pecas[pos.Linha, pos.Coluna] = peca; 
             peca.Posicao = pos;
+        }
+
+        public bool ExistePecaNaPosicao(Posicao pos)
+        {
+            ValidarPosicao(pos);
+            return RetornarPecaNaPosicao(pos) != null;
+        }
+
+        public bool PosicaoValida(Posicao pos) => 
+            (pos.Linha < 0 || pos.Linha >= Linhas || pos.Coluna < 0 || pos.Coluna >= Colunas) ? false : true;
+
+        public void ValidarPosicao(Posicao pos)
+        {
+            if (!PosicaoValida(pos))
+                throw new TabuleiroException($"Posição {pos} inválida!");
         }
     }
 }
