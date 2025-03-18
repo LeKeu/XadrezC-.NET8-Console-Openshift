@@ -17,9 +17,6 @@ namespace Xadrez.Domain.Application.Tabuleiro
             this.Coluna = coluna;
         }
 
-        public override string ToString()
-        {
-            return $"{Linha}, {Coluna}";
-        }
+        public override string ToString() => $"{Linha}, {Coluna}";
     }
 }
