@@ -12,6 +12,14 @@ try
     PosicaoXadrez pos = new('c', 7);
     Console.WriteLine(pos);
     Console.WriteLine(pos.ToPosicao());
+
+    Tabuleiro tab = new(8, 8);
+
+    tab.ColocarPeca(new Torre(tab, EnumCor.Vermelho), new Posicao(0, 0));
+    tab.ColocarPeca(new Rei(tab, EnumCor.Vermelho), new Posicao(0, 4));
+    tab.ColocarPeca(new Rei(tab, EnumCor.Amarela), new Posicao(3, 2));
+
+    Tela.ImprimirTabuleiro(tab);
 }
 catch(TabuleiroException ex)
 {
