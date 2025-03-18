@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xadrez.Domain.Core.Enums;
 
-namespace Xadrez.Domain.Application.Tabuleiro
+namespace Xadrez.Domain.Core.Models.Tabuleiro
 {
     class Peca
     {
         public Posicao Posicao { get; set; }
-        public Cor cor {  get; protected set; }
+        public EnumCor cor { get; protected set; }
         public int qntdMovimentos { get; protected set; }
         public Tabuleiro tabuleiro { get; protected set; }
 
-        public Peca(Posicao pos, Tabuleiro tab, Cor cor)
+        public Peca(Posicao pos, Tabuleiro tab, EnumCor cor)
         {
-            this.Posicao = pos;
-            this.tabuleiro = tab;
+            Posicao = pos;
+            tabuleiro = tab;
             this.cor = cor;
-            this.qntdMovimentos = 0;
+            qntdMovimentos = 0;
         }
     }
 }

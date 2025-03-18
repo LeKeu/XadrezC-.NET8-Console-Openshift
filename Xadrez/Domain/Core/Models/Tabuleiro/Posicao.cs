@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xadrez.Domain.Application.Tabuleiro
+namespace Xadrez.Domain.Core.Models.Tabuleiro
 {
     class Posicao
     {
@@ -13,8 +13,8 @@ namespace Xadrez.Domain.Application.Tabuleiro
 
         public Posicao(int linha, int coluna)
         {
-            this.Linha = linha;
-            this.Coluna = coluna;
+            Linha = linha;
+            Coluna = coluna;
         }
 
         public override string ToString() => $"{Linha}, {Coluna}";

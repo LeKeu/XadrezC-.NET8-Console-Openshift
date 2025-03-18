@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xadrez.Domain.Application.Tabuleiro
+namespace Xadrez.Domain.Core.Enums
 {
-    enum Cor
+    enum EnumCor
     {
-        Branca, 
-        Preta, 
-        Amarela, 
-        Laranja, 
-        Verde, 
+        Branca,
+        Preta,
+        Amarela,
+        Laranja,
+        Verde,
         Vermelho
     }
 }
