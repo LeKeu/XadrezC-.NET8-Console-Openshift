@@ -1,4 +1,5 @@
-﻿using Xadrez.Domain.Core.Models.ModelTabuleiro;
+﻿using Xadrez.Domain.Core.Enums;
+using Xadrez.Domain.Core.Models.ModelTabuleiro;
 
 namespace Xadrez.Domain.Application.UseCases
 {
@@ -13,11 +14,31 @@ namespace Xadrez.Domain.Application.UseCases
                 for (int j = 0; j < Tab.Colunas; j++)
                 {
                     pecaAUX = Tab.RetornarPecaNaPosicao(i, j);
-                    Console.Write((pecaAUX == null ? "-" : pecaAUX) + " ");
+                    if (pecaAUX == null)
+                        Console.Write("- ");
+                    else
+                    {
+                        ImprimirPeca(pecaAUX);
+                        Console.Write(" ");
+                    }
+                    //Console.Write((pecaAUX == null ? "-" : pecaAUX) + " ");
                 }
                 Console.WriteLine();
             }
             Console.WriteLine("  a b c d e f g h");
+        }
+
+        public static void ImprimirPeca(Peca peca)
+        {
+            if (peca.cor == EnumCor.Branca)
+                Console.Write(peca);
+            else
+            {
+                ConsoleColor corAux = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write(peca);
+                Console.ForegroundColor = corAux;
+            }
         }
     }
 }

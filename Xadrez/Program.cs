@@ -15,9 +15,10 @@ try
 
     Tabuleiro tab = new(8, 8);
 
-    tab.ColocarPeca(new Torre(tab, EnumCor.Vermelho), new Posicao(0, 0));
-    tab.ColocarPeca(new Rei(tab, EnumCor.Vermelho), new Posicao(0, 4));
-    tab.ColocarPeca(new Rei(tab, EnumCor.Amarela), new Posicao(3, 2));
+    tab.ColocarPeca(new Torre(tab, EnumCor.Preta), new Posicao(0, 0));
+    tab.ColocarPeca(new Rei(tab, EnumCor.Branca), new Posicao(0, 4));
+    tab.ColocarPeca(new Rei(tab, EnumCor.Branca), new Posicao(3, 2));
+    tab.ColocarPeca(new Rei(tab, EnumCor.Branca), new Posicao(5, 7));
 
     Tela.ImprimirTabuleiro(tab);
 }
