@@ -18,8 +18,12 @@ namespace Xadrez.Domain.Core.Models.Tabuleiro
         public Peca RetornarPecaNaPosicao(int linha, int coluna) => _pecas[linha, coluna];
         
         public Peca RetornarPecaNaPosicao(Posicao pos) => _pecas[pos.Linha, pos.Coluna];
+
         public void ColocarPeca(Peca peca, Posicao pos)
         {
+            if(ExistePecaNaPosicao(pos))
+                throw new TabuleiroException($"Já existe uma peça na posição {pos}");
+
             _pecas[pos.Linha, pos.Coluna] = peca; 
             peca.Posicao = pos;
         }
