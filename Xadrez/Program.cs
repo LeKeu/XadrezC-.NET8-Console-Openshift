@@ -15,6 +15,10 @@ try
     {
         Console.Clear();
         Tela.ImprimirTabuleiro(partida.Tabuleiro);
+        Console.WriteLine();
+        Console.WriteLine($"Turno: {partida.Turno}");
+        Console.WriteLine($"Aguardando Jogada: {partida.JogadorAtual}");
+
 
         Console.WriteLine();
         Console.Write("Origem: ");

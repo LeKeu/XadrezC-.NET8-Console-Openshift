@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xadrez.Domain.Core.Enums;
+﻿using Xadrez.Domain.Core.Enums;
 using Xadrez.Domain.Core.Models.ModelTabuleiro;
 using Xadrez.Domain.Core.Models.Pecas;
 
@@ -12,8 +7,8 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
     class PartidaDeXadrez
     {
         public Tabuleiro Tabuleiro {  get; private set; }
-        private int Turno;
-        private EnumCor JogadorAtual;
+        public int Turno { get; private set; }
+        public  EnumCor JogadorAtual { get; private set; }
         public bool Terminada {  get; private set; }
 
         public PartidaDeXadrez()
@@ -32,6 +27,21 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             p.IncrementarQntdMovimentos();
             Peca pecaCapturada = Tabuleiro.RetirarPeca(Destino);
             Tabuleiro.ColocarPeca(p, Destino);
+        }
+
+        public void RealizaJogada(Posicao origem, Posicao destino)
+        {
+            ExecutaMovimento(origem, destino);
+            Turno++;
+
+        }
+
+        private void MudaJogador()
+        {
+            if (JogadorAtual == EnumCor.Branca)
+                JogadorAtual = EnumCor.Preta;
+            else
+                JogadorAtual = EnumCor.Branca;
         }
 
         private void ColocarPecas()
