@@ -13,17 +13,8 @@ namespace Xadrez.Domain.Application.UseCases
             {
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < Tab.Colunas; j++)
-                {
-                    pecaAUX = Tab.RetornarPecaNaPosicao(i, j);
-                    if (pecaAUX == null)
-                        Console.Write("- ");
-                    else
-                    {
-                        ImprimirPeca(pecaAUX);
-                        Console.Write(" ");
-                    }
-                    //Console.Write((pecaAUX == null ? "-" : pecaAUX) + " ");
-                }
+                    ImprimirPeca(Tab.RetornarPecaNaPosicao(i, j));
+
                 Console.WriteLine();
             }
             Console.WriteLine("  a b c d e f g h");
@@ -31,15 +22,22 @@ namespace Xadrez.Domain.Application.UseCases
 
         public static void ImprimirPeca(Peca peca)
         {
-            if (peca.cor == EnumCor.Branca)
-                Console.Write(peca);
+            if (peca == null)
+                Console.Write("- ");
             else
             {
-                ConsoleColor corAux = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(peca);
-                Console.ForegroundColor = corAux;
+                if (peca.cor == EnumCor.Branca)
+                    Console.Write(peca);
+                else
+                {
+                    ConsoleColor corAux = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(peca);
+                    Console.ForegroundColor = corAux;
+                }
+                Console.Write(" ");
             }
+            
         }
 
         public static PosicaoXadrez LerPosicaoXadrez()
