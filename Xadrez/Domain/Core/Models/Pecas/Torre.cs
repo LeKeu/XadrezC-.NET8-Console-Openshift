@@ -8,7 +8,7 @@ using Xadrez.Domain.Core.Models.ModelTabuleiro;
 
 namespace Xadrez.Domain.Core.Models.Pecas
 {
-    internal class Torre : Peca // KING
+    internal class Torre : Peca
     {
         public Torre(Tabuleiro tab, EnumCor cor) : base(tab, cor) { }
 

@@ -25,17 +25,22 @@ namespace Xadrez.Domain.Application.UseCases
             ConsoleColor fundoOriginal = Console.BackgroundColor;
             ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
 
-            Peca pecaAUX;
             for (int i = 0; i < Tab.Linhas; i++)
             {
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < Tab.Colunas; j++)
                 {
-                    Console.BackgroundColor = posicoesPossiveis[i, j] ? fundoAlterado : fundoOriginal;
+                    if (posicoesPossiveis[i, j])
+                    {
+                        Console.BackgroundColor = fundoAlterado;
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = fundoOriginal;
+                    }
                     ImprimirPeca(Tab.RetornarPecaNaPosicao(i, j));
                     Console.BackgroundColor = fundoOriginal;
                 }
-
                 Console.WriteLine();
             }
             Console.WriteLine("  a b c d e f g h");
