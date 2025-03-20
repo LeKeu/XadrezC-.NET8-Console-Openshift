@@ -20,6 +20,28 @@ namespace Xadrez.Domain.Application.UseCases
             Console.WriteLine("  a b c d e f g h");
         }
 
+        public static void ImprimirTabuleiro(Tabuleiro Tab, bool[,] posicoesPossiveis)
+        {
+            ConsoleColor fundoOriginal = Console.BackgroundColor;
+            ConsoleColor fundoAlterado = ConsoleColor.DarkGray;
+
+            Peca pecaAUX;
+            for (int i = 0; i < Tab.Linhas; i++)
+            {
+                Console.Write(8 - i + " ");
+                for (int j = 0; j < Tab.Colunas; j++)
+                {
+                    Console.BackgroundColor = posicoesPossiveis[i, j] ? fundoAlterado : fundoOriginal;
+                    ImprimirPeca(Tab.RetornarPecaNaPosicao(i, j));
+                    Console.BackgroundColor = fundoOriginal;
+                }
+
+                Console.WriteLine();
+            }
+            Console.WriteLine("  a b c d e f g h");
+            Console.BackgroundColor = fundoOriginal;
+        }
+
         public static void ImprimirPeca(Peca peca)
         {
             if (peca == null)
