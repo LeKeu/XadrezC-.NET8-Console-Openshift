@@ -1,5 +1,6 @@
 ﻿using System.Runtime.ConstrainedExecution;
 using Xadrez.Domain.Core.Enums;
+using Xadrez.Domain.Core.Exceptions;
 using Xadrez.Domain.Core.Models.ModelTabuleiro;
 using Xadrez.Domain.Core.Models.Pecas;
 
@@ -43,6 +44,18 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
                 JogadorAtual = EnumCor.Preta;
             else
                 JogadorAtual = EnumCor.Branca;
+        }
+
+        public void ValidarPosicaoDeOrigem(Posicao pos)
+        {
+            if (Tabuleiro.RetornarPecaNaPosicao(pos) == null)
+                throw new TabuleiroException("Não existe peça nessa posição!");
+
+            if (JogadorAtual != Tabuleiro.RetornarPecaNaPosicao(pos).cor)
+                throw new TabuleiroException("Essa peça não é sua!");
+
+            if (!Tabuleiro.RetornarPecaNaPosicao(pos).ExisteMovimentosPossiveis())
+                throw new TabuleiroException("Não há movimentos possíveis para essa peça!");
         }
 
         private void ColocarPecas()
