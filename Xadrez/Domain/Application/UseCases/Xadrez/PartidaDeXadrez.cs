@@ -35,6 +35,11 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             p.IncrementarQntdMovimentos();
             Peca pecaCapturada = Tabuleiro.RetirarPeca(Destino);
             Tabuleiro.ColocarPeca(p, Destino);
+
+            if(pecaCapturada != null)
+            {
+                PecasCapturadas.Add(pecaCapturada);
+            }
         }
 
         public void RealizaJogada(Posicao origem, Posicao destino)
@@ -68,6 +73,19 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
         {
             if (!Tabuleiro.RetornarPecaNaPosicao(origem).PodeMoverPara(destino))
                 throw new TabuleiroException("Destino inválido...");
+        }
+
+        public HashSet<Peca> ChecarPecasCapturadas(EnumCor cor)
+        {
+            HashSet<Peca> aux = new HashSet<Peca>();
+            foreach (Peca x in PecasCapturadas)
+            {
+                if (x.cor == cor)
+                {
+                    aux.Add(x);
+                }
+            }
+            return aux;
         }
 
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)
