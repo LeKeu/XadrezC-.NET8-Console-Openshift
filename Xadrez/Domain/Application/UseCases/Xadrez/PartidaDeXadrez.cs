@@ -58,6 +58,12 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
                 throw new TabuleiroException("Não há movimentos possíveis para essa peça!");
         }
 
+        public void ValidarPosicaoDeDestino(Posicao origem, Posicao destino)
+        {
+            if (!Tabuleiro.RetornarPecaNaPosicao(origem).PodeMoverPara(destino))
+                throw new TabuleiroException("Destino inválido...");
+        }
+
         private void ColocarPecas()
         {
             Tabuleiro.ColocarPeca(new Torre(Tabuleiro, EnumCor.Branca), new PosicaoXadrez('c', 1).ToPosicao());
