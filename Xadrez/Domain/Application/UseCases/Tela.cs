@@ -6,6 +6,14 @@ namespace Xadrez.Domain.Application.UseCases
 {
     class Tela
     {
+        public static void ImprimirPartida(PartidaDeXadrez partida)
+        {
+            Tela.ImprimirTabuleiro(partida.Tabuleiro);
+            Console.WriteLine();
+            Console.WriteLine($"Turno: {partida.Turno}");
+            Console.WriteLine($"Aguardando Jogada: {partida.JogadorAtual}");
+        }
+
         public static void ImprimirTabuleiro(Tabuleiro Tab)
         {
             Peca pecaAUX;

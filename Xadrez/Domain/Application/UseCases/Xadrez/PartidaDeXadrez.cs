@@ -88,6 +88,20 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             return aux;
         }
 
+        public HashSet<Peca> PecasEmJogo(EnumCor cor)
+        {
+            HashSet<Peca> aux = new HashSet<Peca>();
+            foreach (Peca x in PecasDaPartida)
+            {
+                if (x.cor == cor)
+                {
+                    aux.Add(x);
+                }
+            }
+            aux.ExceptWith(ChecarPecasCapturadas(cor));
+            return aux;
+        }
+
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)
         {
             Tabuleiro.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).ToPosicao());
