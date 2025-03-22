@@ -102,6 +102,18 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             return aux;
         }
 
+        private EnumCor CorAdversaria(EnumCor cor) 
+            => cor == EnumCor.Branca ? EnumCor.Preta : EnumCor.Branca;
+
+        private Peca ChecarRei(EnumCor cor)
+        {
+            foreach(Peca x in PecasEmJogo(cor))
+            {
+                if (x is Rei) return x;
+            }
+            return null;
+        }
+
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)
         {
             Tabuleiro.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).ToPosicao());
