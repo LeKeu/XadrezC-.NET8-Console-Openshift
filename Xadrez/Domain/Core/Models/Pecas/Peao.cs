@@ -40,7 +40,7 @@ namespace Xadrez.Domain.Core.Models.Pecas
                 }
                 pos.DefinirValores(Posicao.Linha - 2, Posicao.Coluna);
                 Posicao p2 = new Posicao(Posicao.Linha - 1, Posicao.Coluna);
-                if (tabuleiro.PosicaoEValida(p2) && Livre(p2) && tabuleiro.PosicaoEValida(pos) && Livre(pos) && qteMovimentos == 0)
+                if (tabuleiro.PosicaoEValida(p2) && Livre(p2) && tabuleiro.PosicaoEValida(pos) && Livre(pos) && qntdMovimentos == 0)
                 {
                     matriz[pos.Linha, pos.Coluna] = true;
                 }
@@ -64,7 +64,7 @@ namespace Xadrez.Domain.Core.Models.Pecas
                 }
                 pos.DefinirValores(Posicao.Linha + 2, Posicao.Coluna);
                 Posicao p2 = new Posicao(Posicao.Linha + 1, Posicao.Coluna);
-                if (tabuleiro.PosicaoEValida(p2) && Livre(p2) && tabuleiro.PosicaoEValida(pos) && Livre(pos) && qteMovimentos == 0)
+                if (tabuleiro.PosicaoEValida(p2) && Livre(p2) && tabuleiro.PosicaoEValida(pos) && Livre(pos) && qntdMovimentos == 0)
                 {
                     matriz[pos.Linha, pos.Coluna] = true;
                 }
