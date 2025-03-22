@@ -8,11 +8,11 @@ using Xadrez.Domain.Core.Models.ModelTabuleiro;
 
 namespace Xadrez.Domain.Core.Models.Pecas
 {
-    internal class Rei : Peca
+    internal class Cavalo : Peca
     {
-        public Rei(Tabuleiro tab, EnumCor cor) : base(tab, cor) { }
+        public Cavalo(Tabuleiro tab, EnumCor cor) : base(tab, cor) { }
 
-        public override string ToString() => "R";
+        public override string ToString() => "C";
 
         private bool PodeMover(Posicao pos)
         {
@@ -24,45 +24,46 @@ namespace Xadrez.Domain.Core.Models.Pecas
             bool[,] matriz = new bool[tabuleiro.Linhas, tabuleiro.Colunas];
             Posicao pos = new Posicao(0, 0);
 
-            // cima
-            pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna);
+            pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 2);
             if (tabuleiro.PosicaoEValida(pos) && PodeMover(pos))
+            {
                 matriz[pos.Linha, pos.Coluna] = true;
-
-            // ne
-            pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 1);
+            }
+            pos.DefinirValores(Posicao.Linha - 2, Posicao.Coluna - 1);
             if (tabuleiro.PosicaoEValida(pos) && PodeMover(pos))
+            {
                 matriz[pos.Linha, pos.Coluna] = true;
-
-            // direita
-            pos.DefinirValores(Posicao.Linha, Posicao.Coluna + 1);
+            }
+            pos.DefinirValores(Posicao.Linha - 2, Posicao.Coluna + 1);
             if (tabuleiro.PosicaoEValida(pos) && PodeMover(pos))
+            {
                 matriz[pos.Linha, pos.Coluna] = true;
-
-            // se
-            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 1);
+            }
+            pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna + 2);
             if (tabuleiro.PosicaoEValida(pos) && PodeMover(pos))
+            {
                 matriz[pos.Linha, pos.Coluna] = true;
-
-            // baixo
-            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna);
+            }
+            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna + 2);
             if (tabuleiro.PosicaoEValida(pos) && PodeMover(pos))
+            {
                 matriz[pos.Linha, pos.Coluna] = true;
-
-            // so
-            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 1);
+            }
+            pos.DefinirValores(Posicao.Linha + 2, Posicao.Coluna + 1);
             if (tabuleiro.PosicaoEValida(pos) && PodeMover(pos))
+            {
                 matriz[pos.Linha, pos.Coluna] = true;
-
-            // esquerda
-            pos.DefinirValores(Posicao.Linha, Posicao.Coluna - 1);
+            }
+            pos.DefinirValores(Posicao.Linha + 2, Posicao.Coluna - 1);
             if (tabuleiro.PosicaoEValida(pos) && PodeMover(pos))
+            {
                 matriz[pos.Linha, pos.Coluna] = true;
-
-            // no
-            pos.DefinirValores(Posicao.Linha - 1, Posicao.Coluna - 1);
+            }
+            pos.DefinirValores(Posicao.Linha + 1, Posicao.Coluna - 2);
             if (tabuleiro.PosicaoEValida(pos) && PodeMover(pos))
+            {
                 matriz[pos.Linha, pos.Coluna] = true;
+            }
 
             return matriz;
         }
