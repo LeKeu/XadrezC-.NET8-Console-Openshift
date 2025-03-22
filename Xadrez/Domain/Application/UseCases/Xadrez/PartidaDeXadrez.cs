@@ -16,6 +16,8 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
         private HashSet<Peca> PecasDaPartida;
         private HashSet<Peca> PecasCapturadas;
 
+        public bool Xeque {  get; private set; }
+
         public PartidaDeXadrez()
         {
             Tabuleiro = new Tabuleiro(8, 8);
@@ -25,6 +27,8 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
 
             PecasDaPartida = new HashSet<Peca>();
             PecasCapturadas = new HashSet<Peca>();
+
+            Xeque = false;
 
             ColocarPecas();
         }
@@ -61,6 +65,9 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
                 DesfazMovimento(origem, destino, pecaCapturada);
                 throw new TabuleiroException("Não pode fazer xeque em vc mesmoo");
             }
+
+            Xeque = EstaEmXeque(CorAdversaria(JogadorAtual)) ? true : false;
+            
 
             Turno++;
             MudaJogador();
