@@ -46,6 +46,7 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             }
             return pecaCapturada;
         }
+
         private void DesfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada)
         {
             Peca p = Tabuleiro.RetirarPeca(destino);
@@ -67,12 +68,15 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             }
 
             Xeque = EstaEmXeque(CorAdversaria(JogadorAtual)) ? true : false;
-            
 
-            Turno++;
-            MudaJogador();
+            if (TestarXequeMate(CorAdversaria(JogadorAtual)))
+                Terminada = true;
+            else
+            {
+                Turno++;
+                MudaJogador();
+            }
         }
-
 
         private void MudaJogador()
         {
@@ -150,6 +154,33 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
                 if (matriz[R.Posicao.Linha, R.Posicao.Coluna]) return true;
             }
             return false;
+        }
+
+        public bool TestarXequeMate(EnumCor cor)
+        {
+            if (!EstaEmXeque(cor)) return false;
+
+            foreach(Peca x in PecasEmJogo(cor))
+            {
+                bool[,] matriz = x.MovimentosPossiveis();
+                for(int i = 0; i < Tabuleiro.Linhas; i++)
+                {
+                    for (int j = 0; j < Tabuleiro.Colunas; j++)
+                    {
+                        if (matriz[i, j])
+                        {
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = ExecutaMovimento(x.Posicao, destino);
+                            bool testeXeque = EstaEmXeque(cor);
+                            DesfazMovimento(x.Posicao, destino, pecaCapturada);
+
+                            if(!testeXeque) return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
 
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)
