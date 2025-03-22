@@ -114,6 +114,19 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             return null;
         }
 
+        public bool EstaEmCheque(EnumCor cor)
+        {
+            Peca R = ChecarRei(cor);
+            if (R == null) throw new TabuleiroException($"Não tem rei da cor {cor} no tabuleiro!");
+
+            foreach (Peca x in PecasEmJogo(CorAdversaria(cor)))
+            {
+                bool[,] matriz = x.MovimentosPossiveis();
+                if (matriz[R.Posicao.Linha, R.Posicao.Coluna]) return true;
+            }
+            return false;
+        }
+
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)
         {
             Tabuleiro.ColocarPeca(peca, new PosicaoXadrez(coluna, linha).ToPosicao());
