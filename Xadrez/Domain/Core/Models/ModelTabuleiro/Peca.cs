@@ -39,7 +39,7 @@ namespace Xadrez.Domain.Core.Models.ModelTabuleiro
             return false;
         }
 
-        public bool PodeMoverPara(Posicao pos) => MovimentosPossiveis()[pos.Linha, pos.Coluna];
+        public bool MovimentoPossivel(Posicao pos) => MovimentosPossiveis()[pos.Linha, pos.Coluna];
 
         public abstract bool[,] MovimentosPossiveis();
     }
