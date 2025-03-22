@@ -29,7 +29,7 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             ColocarPecas();
         }
 
-        public void ExecutaMovimento(Posicao origem, Posicao Destino)
+        public Peca ExecutaMovimento(Posicao origem, Posicao Destino)
         {
             Peca p = Tabuleiro.RetirarPeca(origem);
             p.IncrementarQntdMovimentos();
@@ -40,14 +40,32 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             {
                 PecasCapturadas.Add(pecaCapturada);
             }
+            return pecaCapturada;
+        }
+        private void DesfazMovimento(Posicao origem, Posicao destino, Peca pecaCapturada)
+        {
+            Peca p = Tabuleiro.RetirarPeca(destino);
+            p.DecrementarQntdMovimentos();
+            if(pecaCapturada != null)
+            {
+                Tabuleiro.ColocarPeca(pecaCapturada, destino);
+                PecasCapturadas.Remove(pecaCapturada);
+            }
+            Tabuleiro.ColocarPeca(p, origem);
         }
 
         public void RealizaJogada(Posicao origem, Posicao destino)
         {
-            ExecutaMovimento(origem, destino);
+            Peca pecaCapturada = ExecutaMovimento(origem, destino);
+            if (EstaEmXeque(JogadorAtual)){
+                DesfazMovimento(origem, destino, pecaCapturada);
+                throw new TabuleiroException("Não pode fazer xeque em vc mesmoo");
+            }
+
             Turno++;
             MudaJogador();
         }
+
 
         private void MudaJogador()
         {
@@ -114,7 +132,7 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             return null;
         }
 
-        public bool EstaEmCheque(EnumCor cor)
+        public bool EstaEmXeque(EnumCor cor)
         {
             Peca R = ChecarRei(cor);
             if (R == null) throw new TabuleiroException($"Não tem rei da cor {cor} no tabuleiro!");

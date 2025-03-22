@@ -23,6 +23,7 @@ namespace Xadrez.Domain.Core.Models.ModelTabuleiro
         }
 
         public void IncrementarQntdMovimentos() => qntdMovimentos++;
+        public void DecrementarQntdMovimentos() => qntdMovimentos--;
 
         public bool ExisteMovimentosPossiveis()
         {
