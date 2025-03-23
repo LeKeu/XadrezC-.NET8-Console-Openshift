@@ -78,26 +78,26 @@ namespace Xadrez.Domain.Core.Models.Pecas
             if(qntdMovimentos == 0 && !partida.Xeque)
             {
                 // roque pequeno
-                Posicao posT1 = new Posicao(pos.Linha, pos.Coluna + 3);
+                Posicao posT1 = new Posicao(Posicao.Linha, Posicao.Coluna + 3);
                 if(TesteTorreParaRoque(posT1))
                 {
-                    Posicao p1 = new Posicao(pos.Linha, pos.Coluna + 1);
-                    Posicao p2 = new Posicao(pos.Linha, pos.Coluna + 2);
+                    Posicao p1 = new Posicao(Posicao.Linha, Posicao.Coluna + 1);
+                    Posicao p2 = new Posicao(Posicao.Linha, Posicao.Coluna + 2);
 
                     if (tabuleiro.RetornarPecaNaPosicao(p1) == null && tabuleiro.RetornarPecaNaPosicao(p2) == null)
-                        matriz[pos.Linha, pos.Coluna + 2] = true;
+                        matriz[Posicao.Linha, Posicao.Coluna + 2] = true;
                 }
 
                 // roque grande
-                Posicao posT2 = new Posicao(pos.Linha, pos.Coluna - 4);
+                Posicao posT2 = new Posicao(Posicao.Linha, Posicao.Coluna - 4);
                 if (TesteTorreParaRoque(posT2))
                 {
-                    Posicao p1 = new Posicao(pos.Linha, pos.Coluna - 1);
-                    Posicao p2 = new Posicao(pos.Linha, pos.Coluna - 2);
-                    Posicao p3 = new Posicao(pos.Linha, pos.Coluna - 3);
+                    Posicao p1 = new Posicao(Posicao.Linha, Posicao.Coluna - 1);
+                    Posicao p2 = new Posicao(Posicao.Linha, Posicao.Coluna - 2);
+                    Posicao p3 = new Posicao(Posicao.Linha, Posicao.Coluna - 3);
 
                     if (tabuleiro.RetornarPecaNaPosicao(p1) == null && tabuleiro.RetornarPecaNaPosicao(p2) == null && tabuleiro.RetornarPecaNaPosicao(p3) == null)
-                        matriz[pos.Linha, pos.Coluna - 2] = true;
+                        matriz[Posicao.Linha, Posicao.Coluna - 2] = true;
                 }
             }
 

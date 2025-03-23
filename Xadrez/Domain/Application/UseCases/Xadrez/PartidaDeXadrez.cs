@@ -244,7 +244,7 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             ColocarNovaPeca('b', 1, new Cavalo(Tabuleiro, EnumCor.Branca));
             ColocarNovaPeca('c', 1, new Bispo(Tabuleiro, EnumCor.Branca));
             ColocarNovaPeca('d', 1, new Dama(Tabuleiro, EnumCor.Branca));
-            ColocarNovaPeca('e', 1, new Rei(Tabuleiro, EnumCor.Branca));
+            ColocarNovaPeca('e', 1, new Rei(Tabuleiro, EnumCor.Branca, this));
             ColocarNovaPeca('f', 1, new Bispo(Tabuleiro, EnumCor.Branca));
             ColocarNovaPeca('g', 1, new Cavalo(Tabuleiro, EnumCor.Branca));
             ColocarNovaPeca('h', 1, new Torre(Tabuleiro, EnumCor.Branca));
@@ -261,7 +261,7 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             ColocarNovaPeca('b', 8, new Cavalo(Tabuleiro, EnumCor.Preta));
             ColocarNovaPeca('c', 8, new Bispo(Tabuleiro, EnumCor.Preta));
             ColocarNovaPeca('d', 8, new Dama(Tabuleiro, EnumCor.Preta));
-            ColocarNovaPeca('e', 8, new Rei(Tabuleiro, EnumCor.Preta));
+            ColocarNovaPeca('e', 8, new Rei(Tabuleiro, EnumCor.Preta, this));
             ColocarNovaPeca('f', 8, new Bispo(Tabuleiro, EnumCor.Preta));
             ColocarNovaPeca('g', 8, new Cavalo(Tabuleiro, EnumCor.Preta));
             ColocarNovaPeca('h', 8, new Torre(Tabuleiro, EnumCor.Preta));
