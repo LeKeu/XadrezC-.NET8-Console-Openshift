@@ -72,6 +72,21 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
 
             }
 
+            // en passant
+            if(p is Peao)
+            {
+                if(origem.Coluna != Destino.Coluna && pecaCapturada == null)
+                {
+                    Posicao posP;
+                    if (p.cor == EnumCor.Branca)
+                        posP = new Posicao(Destino.Linha + 1, Destino.Coluna);
+                    else
+                        posP = new Posicao(Destino.Linha - 1, Destino.Coluna);
+
+                    pecaCapturada = Tabuleiro.RetirarPeca(posP);
+                }
+            }
+
             return pecaCapturada;
         }
 
