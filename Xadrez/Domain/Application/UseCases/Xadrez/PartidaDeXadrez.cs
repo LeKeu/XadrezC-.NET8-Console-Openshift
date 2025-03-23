@@ -18,6 +18,8 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
 
         public bool Xeque {  get; private set; }
 
+        private Peca VulneravelEnPassant;
+
         public PartidaDeXadrez()
         {
             Tabuleiro = new Tabuleiro(8, 8);
@@ -29,6 +31,7 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
             PecasCapturadas = new HashSet<Peca>();
 
             Xeque = false;
+            VulneravelEnPassant = null;
 
             ColocarPecas();
         }
@@ -124,6 +127,11 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
                 Turno++;
                 MudaJogador();
             }
+
+            Peca p = Tabuleiro.RetornarPecaNaPosicao(destino);
+            if (p is Peao && (destino.Linha == origem.Linha - 2 || destino.Linha == origem.Linha + 2))
+                VulneravelEnPassant = p;
+            else VulneravelEnPassant = null;
         }
 
         private void MudaJogador()
