@@ -84,6 +84,7 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
                         posP = new Posicao(Destino.Linha - 1, Destino.Coluna);
 
                     pecaCapturada = Tabuleiro.RetirarPeca(posP);
+                    PecasCapturadas.Add(pecaCapturada);
                 }
             }
 
@@ -122,6 +123,22 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
                 T.DecrementarQntdMovimentos();
                 Tabuleiro.ColocarPeca(T, origemTorre);
 
+            }
+
+            // en passant
+            if (p is Peao)
+            {
+                if (origem.Coluna != destino.Coluna && pecaCapturada == VulneravelEnPassant)
+                {
+                    Peca peao = Tabuleiro.RetirarPeca(destino);
+                    Posicao posP;
+                    if (p.cor == EnumCor.Branca)
+                        posP = new Posicao(3, destino.Coluna);
+                    else
+                        posP = new Posicao(4, destino.Coluna);
+
+                    Tabuleiro.ColocarPeca(peao, posP);
+                }
             }
         }
 
