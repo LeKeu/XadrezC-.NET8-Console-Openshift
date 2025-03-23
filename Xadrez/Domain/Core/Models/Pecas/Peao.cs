@@ -64,13 +64,13 @@ namespace Xadrez.Domain.Core.Models.Pecas
                     Posicao esquerda = new Posicao(Posicao.Linha, Posicao.Coluna - 1);
                     if(tabuleiro.PosicaoEValida(esquerda) && ExisteInimigo(esquerda) && tabuleiro.RetornarPecaNaPosicao(esquerda) == partida.VulneravelEnPassant)
                     {
-                        matriz[esquerda.Linha, esquerda.Coluna] = true;
+                        matriz[esquerda.Linha - 1, esquerda.Coluna] = true;
                     }
 
                     Posicao direita = new Posicao(Posicao.Linha, Posicao.Coluna + 1);
                     if (tabuleiro.PosicaoEValida(direita) && ExisteInimigo(direita) && tabuleiro.RetornarPecaNaPosicao(direita) == partida.VulneravelEnPassant)
                     {
-                        matriz[direita.Linha, direita.Coluna] = true;
+                        matriz[direita.Linha - 1, direita.Coluna] = true;
                     }
                 }
             }
@@ -104,13 +104,13 @@ namespace Xadrez.Domain.Core.Models.Pecas
                     Posicao esquerda = new Posicao(Posicao.Linha, Posicao.Coluna - 1);
                     if (tabuleiro.PosicaoEValida(esquerda) && ExisteInimigo(esquerda) && tabuleiro.RetornarPecaNaPosicao(esquerda) == partida.VulneravelEnPassant)
                     {
-                        matriz[esquerda.Linha, esquerda.Coluna] = true;
+                        matriz[esquerda.Linha + 1, esquerda.Coluna] = true;
                     }
 
                     Posicao direita = new Posicao(Posicao.Linha, Posicao.Coluna + 1);
                     if (tabuleiro.PosicaoEValida(direita) && ExisteInimigo(direita) && tabuleiro.RetornarPecaNaPosicao(direita) == partida.VulneravelEnPassant)
                     {
-                        matriz[direita.Linha, direita.Coluna] = true;
+                        matriz[direita.Linha + 1, direita.Coluna] = true;
                     }
                 }
             }
