@@ -18,7 +18,7 @@ namespace Xadrez.Domain.Application.UseCases.Xadrez
 
         public bool Xeque {  get; private set; }
 
-        private Peca VulneravelEnPassant;
+        public Peca VulneravelEnPassant { get; private set; }
 
         public PartidaDeXadrez()
         {
